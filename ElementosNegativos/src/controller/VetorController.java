@@ -2,29 +2,29 @@ package controller;
 
 public class VetorController {
 
-	public int[] VetorNegativo(int[] vetor, int i, int[] negativos) {
+	public int VetorNegativo(int[] vetor, int i, int total) {
 
-		if (i < 0) {
+		//Condição de parada: quando i for igual ao tamanho do vetor [5]
+		//Impedindo que ele tente ler o índice [5] inexistente
+		
+		if (i == vetor.length) {
 
-			return negativos;
+			return total;
 
 		} else {
 			if (vetor[i] < 0) {
 
-				negativos[i] = vetor[i];
+				total = total + 1;
 
 			}
 		}
 
-		return VetorNegativo(vetor, i - 1, negativos);
+		//A função foi escrita para o termo "n" em relação ao anterior
+		//Considerando que, se o valor do termo for negativo, o contador de números
+		//Somará 1 em sua quantidade, em seguida o próximo índice será conferido
+		
+		return VetorNegativo(vetor, i + 1, total);
 	}
 
 }
 
-//int[] negativos = new int[indices];
-
-//if(indices < 0) {
-
-// return negativos;
-
-//}
